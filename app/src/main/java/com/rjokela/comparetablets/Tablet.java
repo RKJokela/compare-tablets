@@ -2,32 +2,51 @@ package com.rjokela.comparetablets;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import java.text.DecimalFormat;
 
 /**
  * Holds all the information for one tablet,
  * and can load it from an xml array.
+ *
+ * Use the following xml array format:
+ *    <array name="identifier">
+ *        <item>Name</item>                         (String)
+ *        <item>OS Version</item>                   (String)
+ *        <item>Price</item>                        (int)
+ *        <item>Width in inches</item>              (float)
+ *        <item>Height in inches</item>             (float)
+ *        <item>Screen Size in inches</item>        (float)
+ *        <item>weight in oz</item>                 (float)
+ *        <item>screen horizontal resolution</item> (int)
+ *        <item>screen vertical resolution</item>   (int)
+ *        <item>screen pixels per inch</item>       (int)
+ *        <item>drawable id</item>                  (Drawable)
+ *    </array>
  *
  * Created by Randon K. Jokela on 7/20/2015.
  */
 public class Tablet {
     public static final String TAG = "Tablet";
     // number of members loaded from xml
-    public static final int COUNT_MEMBERS = 10;
+    public static final int COUNT_MEMBERS = 11;
 
     private String mName;
     private String mOsVersion;
     private int mPrice_dollars;
-    // physical dimensions (metric)
-    private int mWidth_mm;
-    private int mHeight_mm;
-    private int mScreenSize_mm;
-    private int mWeight_g;
+    // physical dimensions
+    private float mWidth_in;
+    private float mHeight_in;
+    private float mScreenSize_in;
+    private float mWeight_oz;
     // screen resolution
     private int mResolution_x;
     private int mResolution_y;
-    private int mScreenPpi;
-
+    private int mScreenDensity_ppi;
+    // picture of the tablet
+    private Drawable mDrawable;
 
     /**
      * Constructor - pass the id of the xml Typed Array resource to load
@@ -37,7 +56,7 @@ public class Tablet {
         TypedArray data = res.obtainTypedArray(id);
 
         // assert data is good
-        if (BuildConfig.DEBUG && data.getIndexCount() != COUNT_MEMBERS) {
+        if (BuildConfig.DEBUG && data.length() != COUNT_MEMBERS) {
             throw new AssertionError("Resource id must be a TypedArray with exactly "
                     + COUNT_MEMBERS + " items.");
         }
@@ -46,13 +65,14 @@ public class Tablet {
         mName = data.getString(idx++);
         mOsVersion = data.getString(idx++);
         mPrice_dollars = data.getInt(idx++, 0);
-        mWidth_mm = data.getInt(idx++, 0);
-        mHeight_mm = data.getInt(idx++, 0);
-        mScreenSize_mm = data.getInt(idx++, 0);
-        mWeight_g = data.getInt(idx++, 0);
+        mWidth_in = data.getFloat(idx++, 0);
+        mHeight_in = data.getFloat(idx++, 0);
+        mScreenSize_in = data.getFloat(idx++, 0);
+        mWeight_oz = data.getFloat(idx++, 0);
         mResolution_x = data.getInt(idx++, 0);
         mResolution_y = data.getInt(idx++, 0);
-        mScreenPpi = data.getInt(idx, 0);
+        mScreenDensity_ppi = data.getInt(idx++, 0);
+        mDrawable = data.getDrawable(idx);
 
         data.recycle();
 
@@ -65,13 +85,24 @@ public class Tablet {
     
     public String getPrice() { return "$" + mPrice_dollars; }
     
-    public String getDimensions() { return mWidth_mm + "mm x " + mHeight_mm + "mm"; }
+    public String getDimensions() {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(mWidth_in) + "\" x " + df.format(mHeight_in) + "\"";
+    }
     
-    public String getScreenSize() { return mScreenSize_mm + "mm"; }
+    public String getScreenSize() {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(mScreenSize_in) + "\"";
+    }
     
-    public String getWeight() { return mWeight_g + "g"; }
+    public String getWeight() {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(mWeight_oz) + " oz";
+    }
     
     public String getResolution() { return mResolution_x + "x" + mResolution_y; }
     
-    public String getScreenPpi() { return mScreenPpi + " ppi"; }
+    public String getScreenPpi() { return mScreenDensity_ppi + " ppi"; }
+
+    public Drawable getDrawable() { return mDrawable; }
 }
