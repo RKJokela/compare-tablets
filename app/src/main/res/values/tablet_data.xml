@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="tablet_ids">
+        <item>@array/kindle</item>
+        <!-- not sure if I'll need this terminator or not -->
+        <item>-1</item>
+    </integer-array>
+
+    <array name="kindle">
+        <item>Kindle Fire HDX 8.9</item>
+        <item>Fire OS 4 "Sangria"</item>
+        <item>379</item>
+        <item>231</item>
+        <item>158</item>
+        <item>226</item>
+        <item>375</item>
+        <item>2560</item>
+        <item>1600</item>
+        <item>339</item>
+    </array>
+</resources>
