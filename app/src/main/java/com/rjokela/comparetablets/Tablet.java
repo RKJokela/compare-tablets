@@ -26,7 +26,7 @@ public class Tablet {
     // screen resolution
     private int mResolution_x;
     private int mResolution_y;
-    private int mScreenDpi;
+    private int mScreenPpi;
 
 
     /**
@@ -52,7 +52,7 @@ public class Tablet {
         mWeight_g = data.getInt(idx++, 0);
         mResolution_x = data.getInt(idx++, 0);
         mResolution_y = data.getInt(idx++, 0);
-        mScreenDpi = data.getInt(idx, 0);
+        mScreenPpi = data.getInt(idx, 0);
 
         data.recycle();
 
@@ -62,4 +62,16 @@ public class Tablet {
     public String getName() { return mName; }
 
     public String getOsVersion() { return mOsVersion; }
+    
+    public String getPrice() { return "$" + mPrice_dollars; }
+    
+    public String getDimensions() { return mWidth_mm + "mm x " mHeight_mm + "mm"; )
+    
+    public String getScreenSize() { return mScreenSize_mm + "mm"; }
+    
+    public String getWeight() { return mWeight_g + "g"; }
+    
+    public String getResolution() { return mResolution_x + "x" + mResolution_y; }
+    
+    public String getScreenPpi() { return mScreenPpi + " ppi"; }
 }
