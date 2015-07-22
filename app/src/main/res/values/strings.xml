@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Compare Tablets</string>
+    <string name="title_activity_tablet_list">Tablet List</string>
+    <string name="action_settings">Settings</string>
+    <string name="tabletList_buttonCompareDisabled">Select one or more tablets</string>
+    <string name="tabletList_buttonCompareEnabled">Compare Selected</string>
 </resources>
