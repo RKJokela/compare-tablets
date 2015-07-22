@@ -75,6 +75,13 @@ public class TabletComparer {
         return count;
     }
 
+    public boolean isSelected(Tablet t) {
+        for (int i = 0; i < tablets.length; i++) {
+            if (t.equals(tablets[i])) return isSelected[i];
+        }
+        return false;
+    }
+
     public class TooManySelectedException extends RuntimeException {
         public TooManySelectedException() {
             super("You may not select more than " + MAX_SELECTED + " tablets!");
@@ -84,10 +91,16 @@ public class TabletComparer {
     public void setSelected(Tablet t, boolean selected) throws TooManySelectedException {
         for (int i = 0; i < tablets.length; i++) {
             if (t.equals(tablets[i])) {
-                if (selected && getSelectedCount() >= MAX_SELECTED)
+                if (selected && getSelectedCount() >= MAX_SELECTED) {
                     throw new TooManySelectedException();
-                else
+                }
+                else if (isSelected[i] == selected) {
+                    Log.w(TAG, t.getName() + " is already " + (selected ? "" : "un") + "selected!");
+                }
+                else {
                     isSelected[i] = selected;
+                    Log.d(TAG, "Tablet " + (selected ? "" : "un") + "selected: " + t.getName());
+                }
             }
         }
     }
@@ -100,7 +113,12 @@ public class TabletComparer {
         setSelected(t, false);
     }
 
+    public void toggleSelected(Tablet t) {
+        setSelected(t, !isSelected(t));
+    }
+
     public void unSelectAll() {
         for (boolean b : isSelected) b = false;
+        Log.d(TAG, "All tablets unselected!");
     }
 }
