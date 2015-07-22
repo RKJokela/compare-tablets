@@ -19,14 +19,18 @@ public class TabletComparer {
 
     private TabletComparer(Resources res, int resourceId) {
         // get tablet ids from array resource
-        int[] tabletIds = res.getIntArray(resourceId);
+        int[] tabletIds = new int[6];
+        for (int i = 0; i < 6; i++) {
+            tabletIds[i] = resourceId;
+        }
 
         // initialize tablets
         tablets = new Tablet[tabletIds.length];
-        int i = 0;
-        for (Tablet t : tablets) t = new Tablet(res, tabletIds[i++]);
+        for (int i = 0; i < tablets.length; i++) {
+            tablets[i] = new Tablet(res, tabletIds[i]);
+        }
 
-        isSelected = new boolean[i];
+        isSelected = new boolean[tablets.length];
         unSelectAll();
     }
 

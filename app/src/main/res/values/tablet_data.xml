@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="tablet_ids">
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <!-- not sure if I'll need this terminator or not -->
-        <item>-1</item>
-    </integer-array>
-
     <array name="kindle">
         <item>Kindle Fire HDX 8.9</item>
         <item>Fire OS 4 "Sangria"</item>
@@ -24,4 +13,13 @@
         <item>339</item>
         <item>@drawable/kindle</item>
     </array>
+
+    <integer-array name="tablet_ids">
+        <item>@array/kindle</item>
+        <item>@array/kindle</item>
+        <item>@array/kindle</item>
+        <item>@array/kindle</item>
+        <item>@array/kindle</item>
+        <item>@array/kindle</item>
+    </integer-array>
 </resources>

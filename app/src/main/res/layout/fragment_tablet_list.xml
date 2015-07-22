@@ -22,5 +22,13 @@
         android:id="@+id/tabletList_scrollView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/tabletList_buttonCompare"/>
+        android:layout_above="@+id/tabletList_buttonCompare">
+
+        <LinearLayout
+            android:id="@+id/tabletList_verticalList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>
