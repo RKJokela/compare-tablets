@@ -16,19 +16,15 @@
         android:layout_centerHorizontal="true"
         android:enabled="false"/>
 
-    <ScrollView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tabletList_scrollView"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/tabletList_listView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/tabletList_buttonCompare">
 
-        <LinearLayout
-            android:id="@+id/tabletList_verticalList"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></LinearLayout>
-
-    </ScrollView>
+    </ListView>
 </RelativeLayout>

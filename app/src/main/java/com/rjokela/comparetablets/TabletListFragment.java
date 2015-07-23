@@ -1,15 +1,21 @@
 package com.rjokela.comparetablets;
 
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.TextView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 
 /**
@@ -19,10 +25,61 @@ public class TabletListFragment extends Fragment {
 
     public static final String TAG = "TabletListFragment";
 
+    public class TabletAdapter extends ArrayAdapter<Tablet> {
+        private final TabletComparer tabletComparer;
+
+        private Button compareButton;
+
+        public TabletAdapter(Context context, int resource, int textViewResourceId, Tablet[] objects, Button compareButton) {
+            super(context, resource, textViewResourceId, objects);
+            tabletComparer = TabletComparer.getInstance();
+            this.compareButton = compareButton;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewGroup layout = (ViewGroup) super.getView(position, convertView, parent);
+
+            //Log.d(TAG, "layout.getChildCount() returned " + layout.getChildCount());
+
+            ImageView image = (ImageView) layout.getChildAt(1);
+            image.setImageDrawable(getItem(position).getDrawable());
+
+            CheckBox checkBox = (CheckBox) layout.getChildAt(0);
+            // make sure all checkboxes have different IDs???
+            checkBox.setId(R.id.checkBox_id + position);
+            Log.d(TAG, "Getting view at position " + position + "; checkbox id is " + checkBox.getId());
+            final int finalPosition = position;
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        tabletComparer.toggleSelected(getItem(finalPosition));
+                    } catch (TabletComparer.TooManySelectedException e) {
+                        ((CheckBox) v).setChecked(false);
+                        Toast.makeText(getContext(), R.string.tabletList_tooManySelected, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    // update button
+                    if (!compareButton.isEnabled() && tabletComparer.getSelectedCount() > 0) {
+                        compareButton.setEnabled(true);
+                        compareButton.setText(getContext().getResources().getString(R.string.tabletList_buttonCompareEnabled));
+                    } else if (compareButton.isEnabled() && tabletComparer.getSelectedCount() == 0) {
+                        compareButton.setEnabled(false);
+                        compareButton.setText(getContext().getResources().getString(R.string.tabletList_buttonCompareDisabled));
+                    }
+                }
+            });
+
+            return layout;
+        }
+    }
+
     private TabletComparer tabletComparer;
 
-    private ViewGroup listContainer;
-    private ViewGroup[] rowContainers;
+    private ListView listContainer;
+    private ListAdapter tabletAdapter;
 
     public TabletListFragment() {
     }
@@ -37,43 +94,21 @@ public class TabletListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        TabletComparer.loadData(getResources(), R.array.kindle);
+        TypedArray tabletIdArray = getResources().obtainTypedArray(R.array.tablet_ids);
+        int[] tabletIds = new int[tabletIdArray.length()];
+        for (int i = 0; i < tabletIds.length; i++) {
+            tabletIds[i] = tabletIdArray.getResourceId(i, -1);
+        }
+        TabletComparer.loadData(getResources(), tabletIds);
         tabletComparer = TabletComparer.getInstance();
 
-        listContainer = (ViewGroup) getActivity().findViewById(R.id.tabletList_verticalList);
-
-        inflateTabletEntries();
-    }
-
-    private void inflateTabletEntries() {
-        int count = tabletComparer.getTabletCount();
-        Log.d(TAG, "Creating " + count + " tablet views...");
-
-        rowContainers = new ViewGroup[count];
-        LayoutInflater inflater = getLayoutInflater(null);
-
-        for (int i = 0; i < count; i++) {
-            Tablet t = tabletComparer.getTablet(i);
-            Log.d(TAG, "Adding tablet " + t.getName() + " to table");
-            rowContainers[i] = (ViewGroup) inflater.inflate(R.layout.tablet_list_entry, listContainer);
-
-            populateTabletData(rowContainers[i], t);
-        }
-
-        Log.d(TAG, "All tablets now show onscreen");
-    }
-
-    private void populateTabletData(ViewGroup layout, Tablet t) {
-        layout = (ViewGroup) layout.getChildAt(0);
-
-        CheckBox checkBox = (CheckBox) layout.getChildAt(0);
-        if (t.equals(tabletComparer.getTablet(2)))
-            checkBox.setChecked(true);
-
-        ImageView image = (ImageView) layout.getChildAt(1);
-        image.setImageDrawable(t.getDrawable());
-
-        TextView title = (TextView) layout.getChildAt(2);
-        title.setText(t.getName());
+        listContainer = (ListView) getActivity().findViewById(R.id.tabletList_listView);
+        Button compareButton = (Button) getActivity().findViewById(R.id.tabletList_buttonCompare);
+        tabletAdapter = new TabletAdapter(getActivity(),
+                R.layout.tablet_list_entry,
+                R.id.tabletEntry_title,
+                tabletComparer.getTablets(),
+                compareButton);
+        listContainer.setAdapter(tabletAdapter);
     }
 }

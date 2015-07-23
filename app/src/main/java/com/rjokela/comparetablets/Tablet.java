@@ -22,7 +22,6 @@ import java.text.DecimalFormat;
  *        <item>weight in oz</item>                 (float)
  *        <item>screen horizontal resolution</item> (int)
  *        <item>screen vertical resolution</item>   (int)
- *        <item>screen pixels per inch</item>       (int)
  *        <item>drawable id</item>                  (Drawable)
  *    </array>
  *
@@ -31,7 +30,7 @@ import java.text.DecimalFormat;
 public class Tablet {
     public static final String TAG = "Tablet";
     // number of members loaded from xml
-    public static final int COUNT_MEMBERS = 11;
+    public static final int COUNT_MEMBERS = 10;
 
     private String mName;
     private String mOsVersion;
@@ -44,7 +43,6 @@ public class Tablet {
     // screen resolution
     private int mResolution_x;
     private int mResolution_y;
-    private int mScreenDensity_ppi;
     // picture of the tablet
     private Drawable mDrawable;
 
@@ -71,7 +69,6 @@ public class Tablet {
         mWeight_oz = data.getFloat(idx++, 0);
         mResolution_x = data.getInt(idx++, 0);
         mResolution_y = data.getInt(idx++, 0);
-        mScreenDensity_ppi = data.getInt(idx++, 0);
         mDrawable = data.getDrawable(idx);
 
         data.recycle();
@@ -80,6 +77,8 @@ public class Tablet {
     }
 
     public String getName() { return mName; }
+    @Override
+    public String toString() { return mName; }
 
     public String getOsVersion() { return mOsVersion; }
     
@@ -101,8 +100,6 @@ public class Tablet {
     }
     
     public String getResolution() { return mResolution_x + "x" + mResolution_y; }
-    
-    public String getScreenPpi() { return mScreenDensity_ppi + " ppi"; }
 
     public Drawable getDrawable() { return mDrawable; }
 }

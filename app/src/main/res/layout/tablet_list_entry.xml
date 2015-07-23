@@ -5,13 +5,11 @@
               android:layout_height="@dimen/tabletList_rowHeight">
 
     <CheckBox
-        android:id="@+id/tabletEntry_checkbox"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"/>
 
     <ImageView
-        android:id="@+id/tabletEntry_image"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"/>
@@ -20,6 +18,8 @@
         android:id="@+id/tabletEntry_title"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="5"/>
+        android:layout_weight="5"
+        android:gravity="center"
+        android:textSize="@dimen/tabletEntry_titleTextSize"/>
 
 </LinearLayout>

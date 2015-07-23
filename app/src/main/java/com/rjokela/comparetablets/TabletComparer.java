@@ -1,5 +1,6 @@
 package com.rjokela.comparetablets;
 
+import android.app.ActionBar;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -17,25 +18,19 @@ public class TabletComparer {
     Tablet[] tablets;
     boolean[] isSelected;
 
-    private TabletComparer(Resources res, int resourceId) {
-        // get tablet ids from array resource
-        int[] tabletIds = new int[6];
-        for (int i = 0; i < 6; i++) {
-            tabletIds[i] = resourceId;
-        }
-
+    private TabletComparer(Resources res, int[] resourceIds) {
         // initialize tablets
-        tablets = new Tablet[tabletIds.length];
+        tablets = new Tablet[resourceIds.length];
         for (int i = 0; i < tablets.length; i++) {
-            tablets[i] = new Tablet(res, tabletIds[i]);
+            tablets[i] = new Tablet(res, resourceIds[i]);
         }
 
         isSelected = new boolean[tablets.length];
         unSelectAll();
     }
 
-    public static void loadData(Resources res, int resourceId) {
-        instance = new TabletComparer(res, resourceId);
+    public static void loadData(Resources res, int[] resourceIds) {
+        instance = new TabletComparer(res, resourceIds);
     }
 
     public static TabletComparer getInstance() {
@@ -53,6 +48,8 @@ public class TabletComparer {
         if (index >= 0 && index < tablets.length) return tablets[index];
         return null;
     }
+
+    public Tablet[] getTablets() { return tablets; }
 
     public int getTabletCount() { return tablets.length; }
 
@@ -105,7 +102,17 @@ public class TabletComparer {
                     isSelected[i] = selected;
                     Log.d(TAG, "Tablet " + (selected ? "" : "un") + "selected: " + t.getName());
                 }
+                break;
             }
+        }
+
+        // Logging for sanity check
+        Log.d(TAG, "# of tablets selected: " + getSelectedCount());
+        int i = 0;
+        Tablet test = getSelectedTablet(i);
+        while (test != null) {
+            Log.d(TAG, " - " + test.getName());
+            test = getSelectedTablet(++i);
         }
     }
 

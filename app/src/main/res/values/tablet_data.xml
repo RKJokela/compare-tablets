@@ -10,16 +10,82 @@
         <item>13.2</item>
         <item>2560</item>
         <item>1600</item>
-        <item>339</item>
         <item>@drawable/kindle</item>
     </array>
 
-    <integer-array name="tablet_ids">
+    <array name="nexus9">
+        <item>Google Nexus 9</item>
+        <item>Android 5.0 "Lollipop"</item>
+        <item>349</item>
+        <item>9.0</item>
+        <item>6.1</item>
+        <item>8.9</item>
+        <item>15.0</item>
+        <item>2048</item>
+        <item>1536</item>
+        <item>@drawable/nexus9</item>
+    </array>
+
+    <array name="shield">
+        <item>Nvidia Shield</item>
+        <item>Android 4.4 "Kitkat"</item>
+        <item>399</item>
+        <item>8.7</item>
+        <item>5.0</item>
+        <item>8.0</item>
+        <item>13.8</item>
+        <item>1920</item>
+        <item>1200</item>
+        <item>@drawable/shield</item>
+    </array>
+
+    <array name="dell">
+        <item>Dell Venue 8 7000</item>
+        <item>Android 5.0.2 "Lollipop"</item>
+        <item>349</item>
+        <item>8.5</item>
+        <item>4.9</item>
+        <item>8.4</item>
+        <item>10.7</item>
+        <item>2560</item>
+        <item>1600</item>
+        <item>@drawable/dell</item>
+    </array>
+
+    <array name="galaxy">
+        <item>Samsung Galaxy Tab S</item>
+        <item>Android 4.4 "Kitkat"</item>
+        <item>379</item>
+        <item>8.4</item>
+        <item>4.9</item>
+        <item>8.4</item>
+        <item>19.2</item>
+        <item>2560</item>
+        <item>1600</item>
+        <item>@drawable/galaxy</item>
+    </array>
+
+    <array name="asus">
+        <item>Asus Memo Pad 7</item>
+        <item>Android 4.4 "Kitkat"</item>
+        <item>150</item>
+        <item>7.5</item>
+        <item>4.5</item>
+        <item>7.0</item>
+        <item>13.8</item>
+        <item>1280</item>
+        <item>800</item>
+        <item>@drawable/asus</item>
+    </array>
+
+    <item type="id" name="checkBox_id"/>
+
+    <array name="tablet_ids">
         <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-        <item>@array/kindle</item>
-    </integer-array>
+        <item>@array/nexus9</item>
+        <item>@array/shield</item>
+        <item>@array/dell</item>
+        <item>@array/galaxy</item>
+        <item>@array/asus</item>
+    </array>
 </resources>
