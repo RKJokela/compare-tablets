@@ -64,6 +64,17 @@ public class TabletComparer {
         return null;
     }
 
+    public Tablet[] getSelectedTablets() {
+        Tablet[] list = new Tablet[getSelectedCount()];
+        int listIndex = 0;
+
+        for (int i = 0; i < tablets.length; i++) {
+            if (isSelected[i]) list[listIndex++] = tablets[i];
+        }
+
+        return list;
+    }
+
     /**
      * get the number of tablets currently selected
      * @return how many are selected
