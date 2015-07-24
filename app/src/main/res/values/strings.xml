@@ -5,4 +5,13 @@
     <string name="tabletList_buttonCompareDisabled">Select up to 3 tablets</string>
     <string name="tabletList_buttonCompareEnabled">Compare Selected</string>
     <string name="tabletList_tooManySelected">Can\'t compare more than 3 at a time</string>
+    <string name="title_activity_tablet_compare">Tablet Comparison</string>
+
+    <string name="tabletCompare_rowNameTitle">Name</string>
+    <string name="tabletCompare_rowNameOs">Operating System</string>
+    <string name="tabletCompare_rowNamePrice">Price</string>
+    <string name="tabletCompare_rowNamePhysicalDimensions">Physical Dimensions</string>
+    <string name="tabletCompare_rowNameWeight">Weight</string>
+    <string name="tabletCompare_rowNameScreenSize">Screen Diagonal Size</string>
+    <string name="tabletCompare_rowNameResolution">Screen Resolution</string>
 </resources>

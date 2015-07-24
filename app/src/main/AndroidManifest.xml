@@ -11,9 +11,18 @@
             android:name=".TabletList"
             android:label="@string/title_activity_tablet_list" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".TabletCompareActivity"
+            android:label="@string/title_activity_tablet_compare"
+            android:parentActivityName=".TabletList" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rjokela.comparetablets.TabletList" />
         </activity>
     </application>
 

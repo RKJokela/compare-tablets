@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="@dimen/tabletCompare_colWidth"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:id="@+id/tabletCompare_entryImage"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryTitle"
+        android:layout_below="@+id/tabletCompare_entryImage"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryOs"
+        android:layout_below="@+id/tabletCompare_entryTitle"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryPrice"
+        android:layout_below="@+id/tabletCompare_entryOs"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryPhysicalDimensions"
+        android:layout_below="@+id/tabletCompare_entryPrice"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryWeight"
+        android:layout_below="@+id/tabletCompare_entryPhysicalDimensions"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryScreenSize"
+        android:layout_below="@+id/tabletCompare_entryWeight"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:text="New Text"
+        android:id="@+id/tabletCompare_entryResolution"
+        android:layout_below="@+id/tabletCompare_entryScreenSize"
+        android:gravity="center"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tabletCompare_rowHeight"
+        android:id="@+id/tabletCompare_entryCheckbox"
+        android:layout_below="@+id/tabletCompare_entryResolution"
+        android:gravity="center"
+        android:checked="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
