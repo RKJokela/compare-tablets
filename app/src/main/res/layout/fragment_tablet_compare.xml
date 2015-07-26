@@ -24,49 +24,56 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNameTitle"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNameOs"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNameOs"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNamePrice"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNamePrice"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNamePhysicalDimensions"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNamePhysicalDimensions"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNameWeight"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNameWeight"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNameScreenSize"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNameScreenSize"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tabletCompare_rowNameResolution"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tabletCompare_rowHeight"
             android:text="@string/tabletCompare_rowNameResolution"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
