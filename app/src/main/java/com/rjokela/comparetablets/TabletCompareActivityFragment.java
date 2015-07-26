@@ -38,6 +38,7 @@ public class TabletCompareActivityFragment extends Fragment {
         dynamicLayout = (LinearLayout) getActivity().findViewById(R.id.tabletCompare_tabletEntriesParent);
 
         TabletCompareAdapter adapter = new TabletCompareAdapter(getActivity(), R.layout.tablet_compare_entry, R.id.tabletCompare_entryTitle, tabletComparer.getSelectedTablets());
+        adapter.setFinishCallback(this);
 
         int count = tabletComparer.getSelectedCount();
         for (int i = 0; i < count; i++) {
@@ -46,5 +47,9 @@ public class TabletCompareActivityFragment extends Fragment {
             View tabletColumn = adapter.getView(i, null, null);
             dynamicLayout.addView(tabletColumn, lp);
         }
+    }
+
+    public void finishActivity() {
+        getActivity().finish();
     }
 }

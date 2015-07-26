@@ -19,6 +19,8 @@ public class TabletCompareAdapter extends ArrayAdapter<Tablet> {
 
     public static final String TAG = "TabletCompareAdapter";
 
+    private TabletCompareActivityFragment parentFragment;
+
     private static final int IDX_IMAGE      = 0;
     private static final int IDX_TITLE      = 1;
     private static final int IDX_OS         = 2;
@@ -77,9 +79,15 @@ public class TabletCompareAdapter extends ArrayAdapter<Tablet> {
             public void onClick(View v) {
                 tabletComparer.unSelect(getItem(finalPosition));
                 layout.setVisibility(View.GONE);
+                if (tabletComparer.getSelectedCount() == 0)
+                    parentFragment.finishActivity();
             }
         });
 
         return layout;
+    }
+
+    public void setFinishCallback(TabletCompareActivityFragment tabletCompareActivityFragment) {
+        parentFragment = tabletCompareActivityFragment;
     }
 }
