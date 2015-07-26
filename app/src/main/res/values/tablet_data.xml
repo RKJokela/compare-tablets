@@ -2,7 +2,7 @@
 <resources>
     <array name="kindle">
         <item>Kindle Fire HDX 8.9</item>
-        <item>Fire OS 4 "Sangria"</item>
+        <item>Fire OS 4 \"Sangria\"</item>
         <item>379</item>
         <item>9.1</item>
         <item>6.2</item>
@@ -15,7 +15,7 @@
 
     <array name="nexus9">
         <item>Google Nexus 9</item>
-        <item>Android 5.0 "Lollipop"</item>
+        <item>Android 5.0 \"Lollipop\"</item>
         <item>349</item>
         <item>9.0</item>
         <item>6.1</item>
@@ -28,7 +28,7 @@
 
     <array name="shield">
         <item>Nvidia Shield</item>
-        <item>Android 4.4 "Kitkat"</item>
+        <item>Android 4.4 \"Kitkat\"</item>
         <item>399</item>
         <item>8.7</item>
         <item>5.0</item>
@@ -41,7 +41,7 @@
 
     <array name="dell">
         <item>Dell Venue 8 7000</item>
-        <item>Android 5.0.2 "Lollipop"</item>
+        <item>Android 5.0.2 \"Lollipop\"</item>
         <item>349</item>
         <item>8.5</item>
         <item>4.9</item>
@@ -54,7 +54,7 @@
 
     <array name="galaxy">
         <item>Samsung Galaxy Tab S</item>
-        <item>Android 4.4 "Kitkat"</item>
+        <item>Android 4.4 \"Kitkat\"</item>
         <item>379</item>
         <item>8.4</item>
         <item>4.9</item>
@@ -67,7 +67,7 @@
 
     <array name="asus">
         <item>Asus Memo Pad 7</item>
-        <item>Android 4.4 "Kitkat"</item>
+        <item>Android 4.4 \"Kitkat\"</item>
         <item>150</item>
         <item>7.5</item>
         <item>4.5</item>
