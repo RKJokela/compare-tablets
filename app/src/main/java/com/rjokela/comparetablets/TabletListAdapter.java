@@ -25,6 +25,8 @@ public class TabletListAdapter extends ArrayAdapter<Tablet> {
         super(context, resource, textViewResourceId, objects);
         tabletComparer = TabletComparer.getInstance();
         this.compareButton = compareButton;
+        boolean anySelected = tabletComparer.getSelectedCount() > 0;
+        compareButton.setEnabled(anySelected);
     }
 
     @Override
@@ -39,6 +41,7 @@ public class TabletListAdapter extends ArrayAdapter<Tablet> {
         CheckBox checkBox = (CheckBox) layout.getChildAt(0);
         // make sure all checkboxes have different IDs???
         checkBox.setId(R.id.checkBox_id + position);
+        checkBox.setChecked(tabletComparer.isSelected(getItem(position)));
         Log.d(TAG, "Getting view at position " + position + "; checkbox id is " + checkBox.getId());
         final int finalPosition = position;
         checkBox.setOnClickListener(new View.OnClickListener() {

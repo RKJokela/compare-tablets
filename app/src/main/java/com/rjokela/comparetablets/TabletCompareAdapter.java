@@ -41,7 +41,7 @@ public class TabletCompareAdapter extends ArrayAdapter<Tablet> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewGroup layout = (ViewGroup) super.getView(position, convertView, parent);
+        final ViewGroup layout = (ViewGroup) super.getView(position, convertView, parent);
 
         //Log.d(TAG, "layout.getChildCount() returned " + layout.getChildCount());
 
@@ -75,14 +75,8 @@ public class TabletCompareAdapter extends ArrayAdapter<Tablet> {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    tabletComparer.toggleSelected(getItem(finalPosition));
-                } catch (TabletComparer.TooManySelectedException e) {
-                    Log.e(TAG, "ERROR: SHOULD NEVER REACH HERE");
-                    ((CheckBox) v).setChecked(false);
-                    Toast.makeText(getContext(), R.string.tabletList_tooManySelected, Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                tabletComparer.unSelect(getItem(finalPosition));
+                layout.setVisibility(View.GONE);
             }
         });
 

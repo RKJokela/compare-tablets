@@ -1,11 +1,13 @@
 package com.rjokela.comparetablets;
 
-import android.app.ActionBar;
 import android.content.res.Resources;
 import android.util.Log;
 
 /**
  * Created by Randon K. Jokela on 7/21/2015.
+ *
+ * This class handles loading the tablets from xml at app start,
+ * and also tracks the selection state across the two activities.
  */
 public class TabletComparer {
     public static final String TAG = "TabletComparer";
@@ -15,8 +17,8 @@ public class TabletComparer {
 
     private static TabletComparer instance = null;
 
-    Tablet[] tablets;
-    boolean[] isSelected;
+    private Tablet[] tablets;
+    private boolean[] isSelected;
 
     private TabletComparer(Resources res, int[] resourceIds) {
         // initialize tablets
@@ -30,7 +32,8 @@ public class TabletComparer {
     }
 
     public static void loadData(Resources res, int[] resourceIds) {
-        instance = new TabletComparer(res, resourceIds);
+        if (instance == null)
+            instance = new TabletComparer(res, resourceIds);
     }
 
     public static TabletComparer getInstance() {
@@ -94,6 +97,10 @@ public class TabletComparer {
         return false;
     }
 
+    public boolean isSelected(int index) {
+        return isSelected[index];
+    }
+
     public class TooManySelectedException extends RuntimeException {
         public TooManySelectedException() {
             super("You may not select more than " + MAX_SELECTED + " tablets!");
@@ -140,7 +147,9 @@ public class TabletComparer {
     }
 
     public void unSelectAll() {
-        for (boolean b : isSelected) b = false;
+        for (int i = 0; i < isSelected.length; i++) {
+            isSelected[i] = false;
+        }
         Log.d(TAG, "All tablets unselected!");
     }
 }

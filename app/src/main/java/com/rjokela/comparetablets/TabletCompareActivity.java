@@ -1,5 +1,6 @@
 package com.rjokela.comparetablets;
 
+import android.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,5 +36,15 @@ public class TabletCompareActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Extra credit - uncheck all tablets when back button pressed
+     */
+    @Override
+    public void onBackPressed() {
+        TabletComparer tabletComparer = TabletComparer.getInstance();
+        tabletComparer.unSelectAll();
+        super.onBackPressed();
     }
 }

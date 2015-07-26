@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
  *        <item>weight in oz</item>                 (float)
  *        <item>screen horizontal resolution</item> (int)
  *        <item>screen vertical resolution</item>   (int)
- *        <item>drawable id</item>                  (Drawable)
+ *        <item>drawable id</item>                  (id of Drawable)
  *    </array>
  *
  * Created by Randon K. Jokela on 7/20/2015.

@@ -5,6 +5,6 @@
     <dimen name="tabletList_rowHeight">90dp</dimen>
     <dimen name="tabletEntry_titleTextSize">18sp</dimen>
     <dimen name="tabletCompare_rowNamesWidth">100dp</dimen>
-    <dimen name="tabletCompare_rowHeight">60dp</dimen>
-    <dimen name="tabletCompare_colWidth">100dp</dimen>
+    <dimen name="tabletCompare_rowHeight">55dp</dimen>
+    <dimen name="tabletCompare_colWidth">80dp</dimen>
 </resources>
