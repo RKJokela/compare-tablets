@@ -1,6 +1,7 @@
 package com.rjokela.comparetablets;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,14 @@ public class TabletListAdapter extends ArrayAdapter<Tablet> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewGroup layout = (ViewGroup) super.getView(position, convertView, parent);
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final ViewGroup layout = (ViewGroup) super.getView(position, convertView, parent);
 
-        //Log.d(TAG, "layout.getChildCount() returned " + layout.getChildCount());
+        // highlight selected items
+        final ColorDrawable highlight = new ColorDrawable(getContext().getResources().getColor(R.color.yellow_highlight));
+        final boolean selected = tabletComparer.isSelected(getItem(position));
+        if (selected)
+            layout.setBackground(highlight);
 
         ImageView image = (ImageView) layout.getChildAt(1);
         image.setImageDrawable(getItem(position).getDrawable());
@@ -41,14 +46,18 @@ public class TabletListAdapter extends ArrayAdapter<Tablet> {
         CheckBox checkBox = (CheckBox) layout.getChildAt(0);
         // make sure all checkboxes have different IDs???
         checkBox.setId(R.id.checkBox_id + position);
-        checkBox.setChecked(tabletComparer.isSelected(getItem(position)));
         Log.d(TAG, "Getting view at position " + position + "; checkbox id is " + checkBox.getId());
-        final int finalPosition = position;
+        checkBox.setChecked(selected);
+
+        // handle clicks on the checkbox
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    tabletComparer.toggleSelected(getItem(finalPosition));
+                    tabletComparer.toggleSelected(getItem(position));
+
+                    // highlight selected tablets
+                    layout.setBackground(tabletComparer.isSelected(position) ? highlight : null);
                 } catch (TabletComparer.TooManySelectedException e) {
                     ((CheckBox) v).setChecked(false);
                     Toast.makeText(getContext(), R.string.tabletList_tooManySelected, Toast.LENGTH_SHORT).show();

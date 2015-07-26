@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -86,6 +87,8 @@ public class TabletListFragment extends Fragment {
                 if (selected != cb.isChecked()) {
                     Log.d(TAG, "Checkbox " + i + " needed update, setting to " + (selected ? "checked" : "unchecked"));
                     cb.setChecked(selected);
+                    View tabletEntry = listContainer.getChildAt(i);
+                    tabletEntry.setBackground(selected ? new ColorDrawable(getResources().getColor(R.color.yellow_highlight)) : null);
                 }
             }
         }

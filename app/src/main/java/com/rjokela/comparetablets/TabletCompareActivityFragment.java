@@ -47,8 +47,4 @@ public class TabletCompareActivityFragment extends Fragment {
             dynamicLayout.addView(tabletColumn, lp);
         }
     }
-
-    public void onBackPressed() {
-        // TODO
-    }
 }
